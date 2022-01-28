@@ -1,1 +1,1 @@
-# angular_node_1
+My first Angular , Node Js Project , before I started working on real-time applications.
