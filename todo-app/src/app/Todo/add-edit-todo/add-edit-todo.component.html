@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="container todo-main">
+  <div class=" row   m-5">
+    <div class="col-md-6 todo-form-space border border-primary m-5">
+      <mat-progress-spinner
+        class="example-margin"
+        color="primary"
+        mode="indeterminate"
+        value="50"
+        *ngIf="loading">
+    </mat-progress-spinner>
+      <form (ngSubmit)="onSubmit(todo_form)" #todo_form='ngForm' autocomplete="off" *ngIf="loading === false;">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label class="text-dark">Todo Title</mat-label>
+            <input matInput placeholder="Enter Todo Title" name="todo_title" [(ngModel)]="todo.todo_title">
+          </mat-form-field>
+
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label class="text-dark">Todo Description</mat-label>
+            <textarea matInput placeholder="Enter Todo Description" name="todo_description" [(ngModel)]="todo.todo_description"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <mat-label class="text-dark">Todo Image </mat-label>
+          </div>
+          <div class="col-md-12">
+            <input  type="file" class="form-control" (change)="imageSelected($event)" #fileInput>
+            <div class="pt-5" *ngIf="url_param != ''">
+              <mat-label class="text-dark">Previously Uploaded Image </mat-label>
+              <img [src]="todo.todo_image" [alt]="todo.todo_title" height="100" width="100">
+            </div>
+          </div>
+        <div class="col-md-12 mt-5 text-center">
+          <button mat-raised-button class="text-dark" style="background-color: aqua;" type="submit">Save Todo</button>
+        </div>
+      </div>
+      </form>
+      <div class="row text-center">
+        <div class="col-md-12 pt-3">
+          <a class="btn" style="background-color: greenyellow; color:black" [routerLink]="['/todo']">Go Back</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+<app-footer></app-footer>

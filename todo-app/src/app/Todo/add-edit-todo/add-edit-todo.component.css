@@ -1,0 +1,16 @@
+.todo-main {
+  background-color: #FAEBD7;
+  height: 100%;
+  width: auto;
+}
+.todo-form-space {
+  background-color: white;
+}
+
+mat-form-field {
+  width: 100%;
+
+}
+
+
+
