@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationComponent } from './Users/user-registration/user-registration.component';
 import { HomepageComponent } from './Home/homepage/homepage.component';
-import { Router, ActivatedRoute, ParamMap, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { LoginComponent } from './Users/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -28,6 +28,7 @@ import { NavbarComponent } from './CommonView/navbar/navbar.component';
 import { FooterComponent } from './CommonView/footer/footer.component';
 import { AddEditTodoComponent } from './Todo/add-edit-todo/add-edit-todo.component';
 import { TodoListComponent } from './Todo/todo-list/todo-list.component';
+// import { AuthRoutingModule } from './LazyLoading/auth-routing/auth-routing.module';
 
 
 
@@ -63,6 +64,7 @@ import { TodoListComponent } from './Todo/todo-list/todo-list.component';
     AngularMaterialsModule,
 
     TodoModule,
+    //AuthRoutingModule
     // CommonViewModule
 
 

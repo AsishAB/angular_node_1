@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
     //throw new Error("Method not implemented.");
     const isAuth  = this.authService.isUserAuthenticated();
     if(!isAuth) {
-      this.route.navigate(['/login']);
+      this.route.navigate(['/user/login']);
     }
     return isAuth;
   }

@@ -1,0 +1,13 @@
+ 
+{
+    "env":{
+        "DB_HOST":"localhost",
+        "DB_USER":"postgres",
+        "DB_PASSWORD":"windows11",
+        "DB_PORT":5432,
+        "DB_NAME":"todo-app",
+
+
+        "SECRET_TOKEN" :"4RUQeQV1tYXyDrLgZW4A7WicvBsJGMMBAJddLwxcEONOJLIXaWhepiSRHMNjkwE73VxsUuhNUKaDmV8L"
+    }
+}

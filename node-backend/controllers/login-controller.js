@@ -2,10 +2,6 @@ const db = require("../db/server");
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 
-const s_token = require("../tokens/auth-token"); 
-
-
-
 
 exports.loginUser = async (req, res, next) => {
     const loginDetails  = req.body;
@@ -53,7 +49,7 @@ exports.loginUser = async (req, res, next) => {
                             userId: userId,
                             email: userEmailId
                         }
-                        token = jwt.sign(session_data, s_token, {expiresIn:'1hr'});
+                        token = jwt.sign(session_data, process.env.SECRET_TOKEN, {expiresIn:'1hr'});
                         
                         //console.log(token);
 

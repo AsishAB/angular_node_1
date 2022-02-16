@@ -13,8 +13,9 @@ import { AuthGuard } from './Guards/auth-guard';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
-  {path: 'new-user', component: UserRegistrationComponent, } ,
-  {path: 'login', component: LoginComponent} ,
+  // {path: 'new-user', component: UserRegistrationComponent, } ,
+  // {path: 'login', component: LoginComponent} ,
+  { path: "user", loadChildren: () => import('./LazyLoading/auth-routing/auth-routing.module').then(m => m.AuthRoutingModule) },
   {path: 'dashboard', component: DashboardComponent , canActivate:[AuthGuard]},
   {path: 'todo', component: TodoListComponent
       // children: [

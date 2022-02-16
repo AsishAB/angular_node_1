@@ -91,7 +91,7 @@ export class AuthService {
     clearTimeout(this.tokenTimeout);
     this.clearAuthToken();
     this.userId = '';
-    this.route.navigate(['/login']);
+    this.route.navigate(['/user/login']);
 
   }
 

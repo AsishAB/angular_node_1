@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  MasterAPI: "http://localhost:3000/"  //Used in global-url.model.ts inside Models Folder
 };
 
 /*
