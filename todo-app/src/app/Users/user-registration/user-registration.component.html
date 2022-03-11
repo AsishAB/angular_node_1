@@ -1,0 +1,201 @@
+
+<app-navbar></app-navbar>
+<section class=" gradient-custom">
+  <div class="container py-5">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5"><a [routerLink]="['']"><i class="fas fa-arrow-left"></i></a></h3>
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+            <mat-progress-spinner
+        class="example-margin"
+        color="primary"
+        mode="indeterminate"
+        value="50"
+        *ngIf="loading">
+    </mat-progress-spinner>
+            <form [formGroup]="form" (submit)="saveUser()" *ngIf="loading == false;">
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="firstName" formControlName="TUM_First_Name" class="form-control form-control-lg" />
+                    <label class="form-label" for="firstName">First Name</label>
+                  </div>
+                  <mat-error *ngIf="isSubmitted && form.get('TUM_First_Name').invalid">First Name is required</mat-error>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="lastName" formControlName="TUM_Last_Name" class="form-control form-control-lg" />
+                    <label class="form-label" for="lastName">Last Name</label>
+                  </div>
+                  <mat-error *ngIf="isSubmitted && form.get('TUM_Last_Name').invalid">Last Name is required</mat-error>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                  <h6 class="mb-2 pb-1">Gender: </h6>
+
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="TUM_Gender"
+                      id="femaleGender"
+                      value="female"
+                      checked
+                      formControlName="TUM_Gender"
+                    />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="TUM_Gender"
+                      id="maleGender"
+                      value="male"
+                      formControlName="TUM_Gender"
+                    />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="TUM_Gender"
+                      id="otherGender"
+                      value="other"
+                      formControlName="TUM_Gender"
+                    />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div>
+                  <mat-error *ngIf="isSubmitted && form.get('TUM_Gender').invalid">Gender is required</mat-error>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="email" id="emailAddress" class="form-control form-control-lg" formControlName="TUM_Email"/>
+                    <label class="form-label" for="emailAddress" >Email</label>
+                  </div>
+                  <mat-error *ngIf="isSubmitted && form.get('TUM_Email').invalid">Email is required</mat-error>
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input onlyNumber  type="text" id="phoneNumber" placeholder="Numbers only" class="form-control form-control-lg" formControlName="TUM_Mobile" maxlength="10"  />
+                    <!-- onlyNumber is a custom directive -->
+                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                  </div>
+                  <mat-error *ngIf="isSubmitted && form.get('TUM_Mobile').invalid">Phone Number is required</mat-error>
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input  type="password" id="password" class="form-control form-control-lg" formControlName="TUM_Password"  />
+                    <!-- onlyNumber is a custom directive -->
+                    <label class="form-label" for="phoneNumber">Password</label>
+                  </div>
+                  <mat-error *ngIf="isSubmitted && form.get('TUM_Password').invalid">Password is required</mat-error>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 ">
+                  <label class="form-label">Country</label>
+                  <br>
+                  <select class="form-control-lg" formControlName="TUM_Country" (change)="getAllStates($event)">
+                    <option value="" >Select country...</option>
+                    <option *ngFor="let country of countryList" [value]="country.id">{{country.name}}</option>
+                  </select>
+                  <mat-error *ngIf="isSubmitted && form.get('TUM_Country').invalid">Country is required</mat-error>
+                </div>
+
+
+                  <div class="col-md-12 ">
+                    <label class="form-label">State</label>
+                    <br>
+                    <select class="form-control-lg" formControlName="TUM_State" (change)="getAllCities($event)">
+                      <option value="" >Select State</option>
+                      <option *ngFor="let state of stateList" [value]="state.id">{{ state.name }}</option>
+                    </select>
+                  </div>
+
+
+
+
+                  <div class="col-md-12">
+                    <label class="form-label">City</label>
+                    <br>
+                    <select class="form-control-lg" formControlName="TUM_City">
+                      <option value="" >Select</option>
+                      <option *ngFor="let city of cityList" [value]="city.id">{{ city.name }}</option>
+                    </select>
+                  </div>
+
+
+              </div>
+              <div class="row mt-5">
+                <div class="col-md-12">
+                  <label class="form-label" for="filePicker">Profile Picture</label>
+                  <button class="btn btn-info" (click)="filePicker.click()" type="button">Pick File</button>
+                  <input type="file" #filePicker  (change)="imagePicker($event)"  style="display: none;" >
+
+                </div>
+
+              </div>
+              <div class="mt-4 pt-2">
+                <button class="btn btn-success btn-lg" type="submit">Submit</button>
+              </div>
+
+            </form>
+            <div class="mt-4 pt-2">
+              <a class="btn btn-primary" [routerLink]="['/login']">Already Registered ? Login Here</a>
+
+            </div>
+            <div class="mt-4 pt-2">
+
+              <a class="btn btn-secondary" [routerLink]="['']">Back to Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
+
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message From Server</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p [class]="response_from_server.response === 'fail' ? 'text-danger' : 'text-success'">{{ response_from_server.message}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger text-center" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+

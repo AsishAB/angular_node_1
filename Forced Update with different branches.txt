@@ -1,0 +1,4 @@
+git checkout dev
+git branch dev master -f    
+git checkout master
+git push origin master -f 
